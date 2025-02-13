@@ -205,6 +205,18 @@ skal returnere:
 ******************************************************************************/
 
 // Skriv koden for oppgave 3 her
+console.warn("oppgave 3 start-----------------------------------------|")
+const wordArray = [" thIS", "teXt  ", " nEeds ", "to", "BE", "cleANED   ", " Up"]
+const cleanedArr = []
+for (const element of wordArray) {
+    let trimmed = element.trim()
+    let lowered = trimmed.toLowerCase()
+    console.log(lowered)
+    cleanedArr.push(lowered)
+    
+}
+const txtStrng = cleanedArr.join(" ")
+console.log(txtStrng)
 
 /******************************************************************************
 4.
@@ -230,10 +242,34 @@ doubleSwap("what is the point of this?", "o", "t")
 skal returnere "whao is ohe ptino tf ohis?"
 
 ******************************************************************************/
+console.warn("oppgave 4 start-----------------------------------------|")
 
 function doubleSwap(string, charA, charB) {
     // Skriv koden for oppgave 4 her
+    //splitter opp strongen til et array
+    const stringArr = string.split("")
+    console.log(stringArr)
+    //elager min egen itterator, siden element her kommer til å returnere en verdi fra arrayet, så kan ikke bruke den forå kartlegge plasseringen i arrayet for
+    let itterator = 0
+    for (let element of stringArr) {
+        itterator++
+        console.log(itterator)
+        switch(true){
+            //hvis value er like variabel value
+            //bytt out bokstaven i arrayet med variabel bokstaven
+            case (element === charA):{
+                //må trekke i fra 1 for å kunne treffe riktig index
+            stringArr.splice(itterator -1 ,1,charB)
+            }default:{
+           console.log(element)
+        }
+        }
+    }
+    console.log(stringArr)
+    return stringArr
 }
+doubleSwap("hello, my name is ","l","o")
+
 
 /******************************************************************************
 5.
