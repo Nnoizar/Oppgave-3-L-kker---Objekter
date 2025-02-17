@@ -213,7 +213,7 @@ for (const element of wordArray) {
     let lowered = trimmed.toLowerCase()
     console.log(lowered)
     cleanedArr.push(lowered)
-    
+
 }
 const txtStrng = cleanedArr.join(" ")
 console.log(txtStrng)
@@ -246,29 +246,31 @@ console.warn("oppgave 4 start-----------------------------------------|")
 
 function doubleSwap(string, charA, charB) {
     // Skriv koden for oppgave 4 her
-    //splitter opp strongen til et array
+    //splitter opp stringen til et array
     const stringArr = string.split("")
     console.log(stringArr)
-    //elager min egen itterator, siden element her kommer til å returnere en verdi fra arrayet, så kan ikke bruke den forå kartlegge plasseringen i arrayet for
+    //lager min egen itterator, siden element her kommer til å returnere en verdi fra arrayet, så kan ikke bruke den forå kartlegge plasseringen i arrayet 
     let itterator = 0
     for (let element of stringArr) {
         itterator++
-        console.log(itterator)
-        switch(true){
-            //hvis value er like variabel value
+        switch (true) {
+            //hvis verdienn er lik variabel value
             //bytt out bokstaven i arrayet med variabel bokstaven
-            case (element === charA):{
+            case (element === charA): {
                 //må trekke i fra 1 for å kunne treffe riktig index
-            stringArr.splice(itterator -1 ,1,charB)
-            }default:{
-           console.log(element)
-        }
+                stringArr.splice(itterator - 1, 1, charB)
+                break
+            }
+            case (element === charB): {
+                stringArr.splice(itterator - 1, 1, charA)
+                break
+            }
         }
     }
     console.log(stringArr)
     return stringArr
 }
-doubleSwap("hello, my name is ","l","o")
+doubleSwap("hello my name is Alex", "a", "e")
 
 
 /******************************************************************************
@@ -301,6 +303,21 @@ PS: Sørg for at funksjonen er case-insensitive; både "Hello" og "hello" skal o
 Jeg har lagt til noen testvariabler for å sjekke funksjonen din.
 
 ******************************************************************************/
+const languages = {
+    hello: "engelsk",
+    ciao: "italiensk",
+    salut: "fransk",
+    hallo: "tysk",
+    hola: "spansk",
+    czesc: "polsk"
+}
+
+
+
+
+
+
+
 
 const greetings = [
     "Hello, how are you today?",
@@ -313,4 +330,33 @@ const greetings = [
     "Good afternoon gentlemen!"
 ];
 
+
+
 // Skriv koden for oppgave 5 her
+console.warn("oppgave 5 start-----------------------------------------|")
+function helloChecker(input) {
+    const arrLength = greetings.length
+    let caseAdjustedInput = input.toLowerCase()
+    let languageResult = `Ingen HELLO oppdaget`
+    //tar greetings arrayet og ittirer gjennom det
+    for (let i = 0; i < arrLength; i++) {
+        //setter value/hele settningen på hver index til små bokstaver
+        let caseAdjustedArr = greetings[i].toLowerCase()
+
+        //sjekker om inputten min finnes i strengen på en gitt index/settnign
+        switch (true) {
+            case (caseAdjustedArr.includes(caseAdjustedInput)): {
+                console.log(caseAdjustedArr.includes(caseAdjustedInput))//returnerer true/false
+                console.log(caseAdjustedArr)
+                //når jeg skal ha tak i en verdi ved å bruke en variabel, så må jeg sette den i [] bracket notaion og ikke .key
+                console.log(languages[caseAdjustedInput])
+                console.log(caseAdjustedInput)
+                languageResult = `HELLO oppdaget på ${languages[caseAdjustedInput]}.`
+                break
+            }
+        }
+    }
+    return (languageResult)
+}
+
+console.log(helloChecker("hola"))
